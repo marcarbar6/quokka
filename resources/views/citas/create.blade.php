@@ -19,6 +19,14 @@
 
 
                         </div>
+                        <div class="form-group">
+                            {!! Form::label('Localizacion', 'Localizacion de la cita') !!}
+
+
+                            <input type="String" id="Localizacion" name="Localizacion" class="form-control" value="{{Carbon\Carbon::now()->format('')}}" />
+
+
+                        </div>
 
                         <div class="form-group">
                             {!!Form::label('medico_id', 'Medico') !!}
