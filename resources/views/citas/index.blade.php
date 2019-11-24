@@ -17,10 +17,10 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Fecha</th>
+                                <th>Localizacion</th>
                                 <th>Medico</th>
                                 <th>Paciente</th>
                                 <th colspan="2">Acciones</th>
-                                <th>Localizacion</th>
                             </tr>
 
                             @foreach ($citas as $cita)
@@ -28,7 +28,7 @@
 
                                 <tr>
                                     <td>{{ $cita->fecha_hora }}</td>
-                                    <td>{{ $cita->Localizacion }}</td>
+                                    <td>{{ $cita->localizacion }}</td>
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
                                     <td>
