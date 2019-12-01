@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use App\Especialidad;
+
 
 
 class EspecialidadController extends Controller

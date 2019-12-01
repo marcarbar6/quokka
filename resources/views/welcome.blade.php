@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                     CGIS: Citas Pacientes CON QUOKKA
+                     CGIS: Citas Pacientes QUOKKA
                 </div>
 
                 <div class="links">

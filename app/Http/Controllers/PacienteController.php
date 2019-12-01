@@ -52,7 +52,7 @@ class PacienteController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             //array nuhsa revisas
-            'nuhsa' => 'required|regex:/^AN([0-9]){10}/|alpha_num|unique:pacientes'
+            'nuhsa' => 'required|nuhsa|unique:pacientes'
         ]);
 
         //TODO: crear validación propia para nuhsa
@@ -107,7 +107,7 @@ class PacienteController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             //array nuhsa revisas
-            'nuhsa' => 'required|regex:/^AN([0-9]){10}/|alpha_num|unique:pacientes'
+            'nuhsa' => 'required|nuhsa|unique:pacientes'
         ]);
 
         $paciente = Paciente::find($id);
