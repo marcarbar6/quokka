@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cita extends Model
 {
     protected $fillable = ['fecha_hora', 'localizacion', 'medico_id', 'paciente_id'];
-    protected $dates=['fecha_hora','fecha_fin'];
+    protected $dates=['fecha_hora'];
 
 
 

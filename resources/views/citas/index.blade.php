@@ -29,7 +29,7 @@
 
                                 <tr>
                                     <td>{{ $cita->fecha_hora }}</td>
-                                    <td>{{ $cita->fecha_hora->addMinutes(15)}}</td>
+                                    <td>{{ $this->sumaMinutos($cita->fecha_hora)}}</td>
                                     <td>{{ $cita->localizacion }}</td>
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
@@ -51,4 +51,5 @@
                 </div>
             </div>
         </div>
+
 @endsection

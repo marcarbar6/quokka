@@ -63,7 +63,7 @@ class CitaController extends Controller
 
 
         $cita = new Cita($request->all());
-        $cita->fecha_fin=$cita->fecha_hora->addMinutes(15);
+        $this->sumaMinutos($cita->fecha_hora);
 
         $cita->save();
 
@@ -74,6 +74,9 @@ class CitaController extends Controller
         return redirect()->route('citas.index');
     }
 
+    public function sumaMinutos($date){
+        return $date->addMinutes(15);
+    }
     /**
      * Display the specified resource.
      *
