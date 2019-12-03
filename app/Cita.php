@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Cita extends Model
 {
     protected $fillable = ['fecha_hora', 'localizacion', 'medico_id', 'paciente_id'];
-    protected $dates=['fecha_hora'];
-
 
 
     public function medico()
@@ -21,5 +19,10 @@ class Cita extends Model
     {
         return $this->belongsTo('App\Paciente');
     }
+    public function sumaMinutos(){
 
+        $total = strtotime ( '+15 minute' , strtotime ($this->fecha_hora) ) ;
+        $fecha_fin = date('Y-m-d\ H:i', $total);
+        return $fecha_fin;
+    }
 }
