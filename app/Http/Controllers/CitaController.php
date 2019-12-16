@@ -25,10 +25,19 @@ class CitaController extends Controller
      */
     public function index()
     {
-        $citas = Cita::all();
+        $now = strtotime(date('Y-m-d\ H:i'));
+       $citas = array();
+       $citasT = Cita::all();
+
+        foreach ($citasT as $cita){
+            if(strtotime($cita->fecha_hora) >= $now){
+                  array_push($citas,$cita);
+            }
+        }
 
         return view('citas/index',['citas'=>$citas]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -83,7 +92,17 @@ class CitaController extends Controller
      */
     public function show($id)
     {
-        //
+        $now = strtotime(date('Y-m-d\ H:i'));
+        $citas = array();
+        $citasT = Cita::all();
+
+        foreach ($citasT as $cita){
+           if(strtotime($cita->fecha_hora) < $now){
+               array_push($citas,$cita);
+            }
+        }
+
+        return view('citas/index',['citas'=>$citas]);
     }
 
     /**

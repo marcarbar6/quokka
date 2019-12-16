@@ -9,11 +9,23 @@
 
                     <div class="panel-body">
                         @include('flash::message')
+
+                        {!! Form::open(['route' => ['citas.show','id'], 'method' => 'get','class'=>'inline-important']) !!}
+                        {!!   Form::submit('Citas Anteriores', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::close() !!}
+
+                        {!! Form::open(['route' => 'citas.index', 'method' => 'get','class'=>'inline-important']) !!}
+                        {!!   Form::submit('Atrás', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::close() !!}
+
+
+                        <br><br>
                         {!! Form::open(['route' => 'citas.create', 'method' => 'get']) !!}
                         {!!   Form::submit('Crear cita', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
                         <br><br>
+                        {!! Form::open(['route' => 'citas.index', 'method' => 'get']) !!}
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Fecha</th>

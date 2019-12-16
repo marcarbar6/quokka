@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Paciente;
+use App\Especialidad;
+use App\Medico;
 
 class PacienteController extends Controller
 {
@@ -17,13 +19,17 @@ class PacienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $especialidades = Especialidad::all() -> pluck('name', 'id');
+        $especialidad_id = $request-> get('especialidad_id');
+        $query_base= Paciente::orderBy('id','desc');
+        if(isset($especialidad_id) && $especialidad_id!=""){
+            $query_base->where('especialidad_id', $especialidad_id);
+        }
+        $pacientes = $query_base->paginate(6);
 
-        $pacientes = Paciente::all();
-
-        return view('pacientes/index',['pacientes'=>$pacientes]);
+        return view('pacientes/index',compact('pacientes'),['especialidades'=>$especialidades])->withUsers($pacientes);
     }
 
     /**
@@ -119,6 +125,10 @@ class PacienteController extends Controller
 
         return redirect()->route('pacientes.index');
 
+
+    }
+
+    public function filtrar(Request $request){
 
     }
 

@@ -8,10 +8,22 @@
                     <div class="panel-heading">Pacientes</div>
 
                     <div class="panel-body">
+
                         @include('flash::message')
                         {!! Form::open(['route' => 'pacientes.create', 'method' => 'get']) !!}
                         {!!   Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
+                        <br><br>
+
+                        {!! Form::open(['route' => 'pacientes.index', 'method' => 'get']) !!}
+                        <div class="form-group">
+                            {!!Form::label('especialidad_id', 'Especialidad') !!}
+                            <br>
+                            {!! Form::select('especialidad_id', $especialidades, ['class' => 'form-control', 'required']) !!}
+                            {!!   Form::submit('Buscar', ['class'=> 'btn btn-primary'])!!}
+                        </div>
+                        {!! Form::close() !!}
+
 
                         <br><br>
                         <table class="table table-striped table-bordered">
