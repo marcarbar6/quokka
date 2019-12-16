@@ -27,6 +27,15 @@
 
 
                         </div>
+                        <div class="form-group">
+                            {!! Form::label('duracion', 'Duracion') !!}
+
+
+                            <input type="Integer" id="duracion" name="duracion" class="form-control" value="15"/>
+
+
+                        </div>
+
 
                         <div class="form-group">
                             {!!Form::label('medico_id', 'Medico') !!}

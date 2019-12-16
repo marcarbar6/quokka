@@ -72,7 +72,7 @@ class CitaController extends Controller
 
 
         $cita = new Cita($request->all());
-
+        $cita->fecha_fin = $cita->fecha_hora->addMinutes($cita->duracion);
         $cita->save();
 
 
@@ -142,7 +142,7 @@ class CitaController extends Controller
         ]);
         $cita = Cita::find($id);
         $cita->fill($request->all());
-
+        $cita->fecha_fin = $cita->fecha_hora->addMinutes($cita->duracion);
         $cita->save();
 
         flash('Cita modificada correctamente');

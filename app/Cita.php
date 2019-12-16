@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
-    protected $fillable = ['fecha_hora', 'localizacion', 'medico_id', 'paciente_id'];
-
+    protected $fillable = ['fecha_hora', 'localizacion', 'duracion','medico_id', 'paciente_id'];
+    protected $dates = ['fecha_hora','fecha_fin'];
 
     public function medico()
     {
@@ -19,10 +19,8 @@ class Cita extends Model
     {
         return $this->belongsTo('App\Paciente');
     }
-    public function sumaMinutos(){
-
-        $total = strtotime ( '+15 minute' , strtotime ($this->fecha_hora) ) ;
-        $fecha_fin = date('Y-m-d\ H:i', $total);
-        return $fecha_fin;
+    public function setFechaHoraAtribute($date){
+        if (is_string($date))
+            $this->attributes['fecha_hora'] = Carbon::parse($date);
     }
 }
