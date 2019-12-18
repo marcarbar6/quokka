@@ -74,13 +74,20 @@ class CitaController extends Controller
         $cita = new Cita($request->all());
         $fecha2=clone $cita->fecha_hora;
         $cita->fecha_fin = $fecha2->addMinutes($cita->duracion);
-        $cita->save();
+        if($cita->mismaEspecialidad()==TRUE){
+            $cita->save();
+            flash('Cita creada correctamente');
+            return redirect()->route('citas.index');
+        }else{
+            return redirect()->route('citas.create');
+        }
 
 
 
-        flash('Cita creada correctamente');
 
-        return redirect()->route('citas.index');
+
+
+
     }
 
 

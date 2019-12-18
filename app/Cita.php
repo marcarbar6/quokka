@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class Cita extends Model
 {
@@ -22,5 +23,15 @@ class Cita extends Model
     public function setFechaHoraAttribute($date){
 
         $this->attributes['fecha_hora'] = Carbon::parse($date);
+    }
+
+    public function mismaEspecialidad(){
+        $especialidadMed=$this->medico->especialidad;
+        $especialidadPac=$this->paciente->enfermedad->especialidad;
+        if($especialidadMed==$especialidadPac){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
     }
 }
