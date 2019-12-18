@@ -18,6 +18,7 @@ class CitasV2Table extends Migration
         Schema::create('citas', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('fecha_hora');
+            $table->dateTime('fecha_fin');
             $table->string('localizacion');
             $table->Integer('duracion');
             $table->unsignedInteger('medico_id');

@@ -19,8 +19,8 @@ class Cita extends Model
     {
         return $this->belongsTo('App\Paciente');
     }
-    public function setFechaHoraAtribute($date){
-        if (is_string($date))
-            $this->attributes['fecha_hora'] = Carbon::parse($date);
+    public function setFechaHoraAttribute($date){
+
+        $this->attributes['fecha_hora'] = Carbon::parse($date);
     }
 }
