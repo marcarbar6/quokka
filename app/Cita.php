@@ -31,6 +31,7 @@ class Cita extends Model
         if($especialidadMed==$especialidadPac){
             return TRUE;
         }else{
+            flash("Medico de distinta especialidad");
             return FALSE;
         }
     }
