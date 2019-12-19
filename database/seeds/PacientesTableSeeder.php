@@ -18,7 +18,8 @@ class PacientesTableSeeder extends Seeder
                 'name' => $faker->unique()->randomElement(['Blanca','Ainhoa','Luci','Angel']),
                 'surname'  => $faker->unique()->randomElement(['Velasco','Heras','García','Carrillo',]),
                 'nuhsa' => $faker->unique()->randomElement($array = array ('AN1000038583','AN0408397178','AN0326435212','AN0404408155','AN0415331870')),
-                'enfermedad_id' => App\Enfermedad::all()->random()->id
+                'enfermedad_id' => App\Enfermedad::all()->random()->id,
+                'especialidad_id' => App\Especialidad::all()->random()->id
             ));
 
         }
