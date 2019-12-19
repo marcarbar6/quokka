@@ -24,7 +24,7 @@
                         </div>
                         {!! Form::close() !!}
 
-
+                        <div className="links">{{$pacientes->links()}}</div>
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>

@@ -15,7 +15,9 @@ class PacienteV2Table extends Migration
     {
         Schema::table('pacientes', function (Blueprint $table) {
             $table->unsignedInteger('enfermedad_id');
+            $table->unsignedInteger('especialidad_id');
             $table->foreign('enfermedad_id')->references('id')->on('enfermedads');
+            $table->foreign('especialidad_id')->references('id')->on('especialidads');
 
         });
 

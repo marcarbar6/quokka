@@ -22,14 +22,14 @@ class PacienteController extends Controller
      */
     public function index(Request $request)
     {
-        $especialidades = Especialidad::all() -> pluck('name', 'id');
-        $especialidad_id = $request-> get('especialidad_id');
-        $query_base= Paciente::orderBy('id','desc');
+        $especialidades= Especialidad::all()->pluck('name','id');
+        //Filtro
+        $especialidad_id=$request->get('especialidad_id');
+        $query_base = Paciente::orderBy('id', 'desc');
         if(isset($especialidad_id) && $especialidad_id!=""){
-            $query_base->where('especialidad_id', $especialidad_id);
+            $query_base->where('especialidad_id',$especialidad_id);
         }
         $pacientes = $query_base->paginate(6);
-
         return view('pacientes/index',compact('pacientes'),['especialidades'=>$especialidades])->withUsers($pacientes);
     }
 
@@ -56,13 +56,18 @@ class PacienteController extends Controller
 
     public function store(Request $request)
     {
+        $enfermedad_id=$request->get('enfermedad_id');
+        $enfermedad=Enfermedad::find($enfermedad_id);
+        $especialidad_id=$enfermedad->especialidad_id;
+        $request->merge(["especialidad_id"=>$especialidad_id]);
 
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             //array nuhsa revisas
             'nuhsa' => 'required|nuhsa|unique:pacientes',
-            'enfermedad_id' => 'required|exists:enfermedads,id'
+            'enfermedad_id' => 'required|exists:enfermedads,id',
+            'especialidad_id' => 'required|exists:especialidads,id'
         ]);
 
         //TODO: crear validación propia para nuhsa
@@ -115,11 +120,17 @@ class PacienteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $enfermedad_id=$request->get('enfermedad_id');
+        $enfermedad=Enfermedad::find($enfermedad_id);
+        $especialidad_id=$enfermedad->especialidad_id;
+        $request->merge(["especialidad_id"=>$especialidad_id]);
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             //array nuhsa revisas
             'nuhsa' => 'required|nuhsa|unique:pacientes',
+            'enfermedad_id' => 'required|exists:enfermedads,id',
             'enfermedad_id' => 'required|exists:enfermedads,id'
         ]);
 
@@ -135,9 +146,7 @@ class PacienteController extends Controller
 
     }
 
-    public function filtrar(Request $request){
 
-    }
 
     /**
      * Remove the specified resource from storage.
